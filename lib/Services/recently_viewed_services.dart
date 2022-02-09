@@ -1,10 +1,9 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:onmarket_test/Models/product_model.dart';
 
 class RecentlyViewedServices extends GetxController {
-  List<ProductModel> _productModels = [];
+  final List<ProductModel> _productModels = [];
   List<ProductModel> get productModels => _productModels;
   final CollectionReference _recentlyViewedRef =
       FirebaseFirestore.instance.collection("RecentlyViewed");

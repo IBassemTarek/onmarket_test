@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:onmarket_test/wrapper.dart';
 import './blinding.dart';
-import '../Components/bottom_navigation.dart';
-import './Controllers/bottom_bar_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
@@ -19,13 +18,7 @@ class MyApp extends StatelessWidget {
       initialBinding: Binding(),
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: GetBuilder<BottomNavigationBarModel>(
-        init: BottomNavigationBarModel(),
-        builder: (c) => Scaffold(
-          bottomNavigationBar: buttomNavigator(),
-          body: c.currentScreen,
-        ),
-      ),
+      home: const Wrapper() 
     );
   }
 }

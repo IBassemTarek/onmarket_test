@@ -21,7 +21,7 @@ class MainScreen extends StatelessWidget {
               GetBuilder<TopRatedServices>(
                 init: Get.find<TopRatedServices>(),
                 builder: (c) => ProductsSlider(
-                  products: c.ProductModels,
+                  products: c.productModels,
                   catTitle: 'Top Rated',
                 ),
               ),
@@ -41,7 +41,7 @@ class MainScreen extends StatelessWidget {
               GetBuilder<MostSellingServices>(
                 init: Get.find<MostSellingServices>(),
                 builder: (c) => ProductsSlider(
-                  products: c.ProductModels,
+                  products: c.productModels,
                   catTitle: 'Most Selling',
                 ),
               ),

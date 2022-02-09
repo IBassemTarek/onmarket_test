@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:onmarket_test/Components/styled_text.dart';
 import 'package:onmarket_test/Controllers/bottom_bar_controller.dart';
-import 'package:onmarket_test/Models/cart_model.dart';
 import 'package:onmarket_test/Models/product_model.dart';
-import 'package:onmarket_test/Screens/cartPage/cart_page.dart';
 import 'package:onmarket_test/Services/cart_services.dart';
 import 'package:onmarket_test/Utils/constants.dart';
 

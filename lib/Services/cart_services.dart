@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:onmarket_test/Models/cart_model.dart';
 import 'package:get/get.dart';
-import 'package:onmarket_test/Models/product_model.dart';
 
 class CartController extends GetxController {
   Rx<List<CartModel>> cartList = Rx<List<CartModel>>([]);
@@ -73,6 +72,7 @@ class CartController extends GetxController {
               }
           });
     } catch (e) {
+      // ignore: avoid_print
       print(e);
     }
   }
@@ -97,6 +97,7 @@ class CartController extends GetxController {
               }
           });
     } catch (e) {
+      // ignore: avoid_print
       print(e);
     }
   }
