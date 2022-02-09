@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:onmarket_test/Models/auth_times.dart';
 import 'package:onmarket_test/wrapper.dart';
+import 'package:provider/provider.dart';
 import './blinding.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+import 'Models/modalprogrsshub.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +22,15 @@ class MyApp extends StatelessWidget {
       initialBinding: Binding(),
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: const Wrapper() 
+      home:    MultiProvider( providers:  [
+              ChangeNotifierProvider<ModelHub>(
+          create: (context) => ModelHub(),
+        ),
+         ChangeNotifierProvider<AuthTime>(
+          create: (context) => AuthTime(),
+        ),
+        
+        ],child: const Wrapper()) 
     );
   }
 }

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:onmarket_test/Models/auth_times.dart';
 import 'package:onmarket_test/Models/modalprogrsshub.dart';
 import 'package:onmarket_test/Models/user.dart';
-import 'package:onmarket_test/Screens/mainScreen/main_screen.dart';
-import 'package:provider/provider.dart';
-import '../../Components/page_route_animation.dart';
+import 'package:provider/provider.dart'; 
 import '../../Utils/constants.dart';
 import 'custom_text_field.dart';
 import '../../Services/auth.dart';
+import 'dart:io';
 
 // ignore: must_be_immutable
 class SignIn extends StatelessWidget {
@@ -125,6 +125,7 @@ class SignIn extends StatelessWidget {
                         EdgeInsets.symmetric(horizontal: 0.290773 * _width),
                     child: InkWell(
                       onTap: () async {
+                        // SystemChannels.platform.invokeMethod('SystemNavigator.pop');
                         _validate(context);
                       },
                       child: Container(
@@ -156,6 +157,7 @@ class SignIn extends StatelessWidget {
   }
 
   void _validate(BuildContext context) async {
+    final _authTimes = Provider.of<AuthTime>(context , listen: false);
     final modelhud = Provider.of<ModelHub>(context,listen:false);
     modelhud.changeIsLoading(true);
     if (_globalKey.currentState!.validate()) {
@@ -169,15 +171,15 @@ class SignIn extends StatelessWidget {
             // ignore: avoid_print
             print(user.id);
           }
-          Navigator.push(
-            context,
-            OnBoardingPageRoute(
-                duration: 1000,
-                widget: const MainScreen(),
-                myAnimation: Curves.elasticInOut),
-          );
+      
           
         } catch (e) {
+          if (_authTimes.tries == 2)
+          {
+            exit(0);
+          }else {
+            _authTimes.changeTries(_authTimes.tries +1 );
+          }
           modelhud.changeIsLoading(false);
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(e.toString()),

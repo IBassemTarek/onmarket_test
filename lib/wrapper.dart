@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:onmarket_test/Models/modalprogrsshub.dart';  
-import 'package:provider/provider.dart';
 import '../Components/bottom_navigation.dart';
 import './Controllers/bottom_bar_controller.dart';
 
@@ -25,13 +23,7 @@ class Wrapper extends StatelessWidget {
           else if (snapshot.connectionState == ConnectionState.active) {
             User? user = snapshot.data;
             if (user == null) {
-              return MultiProvider(
-      providers:  [
-              ChangeNotifierProvider<ModelHub>(
-          create: (context) => ModelHub(),
-        ),
-        ],
-        child:  SignIn());
+              return  SignIn();
             } else {
               return  GetBuilder<BottomNavigationBarModel>(
         init: BottomNavigationBarModel(),
